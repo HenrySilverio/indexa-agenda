@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { SeparatorComponent } from './components/separator/separator.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import contacts from './contacts.json';
+import { FormularioContatoComponent } from './paginas/formulario-contato/formulario-contato.component';
 
 interface Contact {
   id: number;
@@ -24,7 +25,8 @@ interface Contact {
     ContainerComponent,
     HeaderComponent,
     SeparatorComponent,
-    ContactsComponent
+    ContactsComponent,
+    FormularioContatoComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
