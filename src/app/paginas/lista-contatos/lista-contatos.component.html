@@ -1,0 +1,20 @@
+<app-container>
+  <app-header></app-header>
+  <input type="search" placeholder="Digite paara buscar" [(ngModel)]="filtroPorTexto">
+
+  <section class="adicionar-contato">
+    <button type="button" routerLink="/formulario-contato">
+      <img src="/assets/plus.png" alt="">
+      <span>Adicionar Contato</span>
+    </button>
+  </section>
+
+  @for (letra of alfabeto; track letra) {
+  <app-separator>
+    {{ letra }}
+    @for (contacts of getContactsByLetter(letra); track contacts.id) {
+    <app-contacts [name]="contacts.name" [phone]="contacts.phone"></app-contacts>
+    }
+  </app-separator>
+  }
+</app-container>
