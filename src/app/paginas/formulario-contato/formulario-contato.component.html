@@ -12,12 +12,24 @@
   <form [formGroup]="contatoForm" (ngSubmit)="salvarContato()">
     <label for="nome">Nome</label>
     <input type="text" id="nome" name="nome" placeholder="Digite o nome do contato" formControlName="nome">
+    @if (contatoForm.get('nome')?.errors && contatoForm.get('required')?.touched) {
+      <div class="mensagem-erro">Campo Obrigatorio</div>
+    }
 
     <label for="numero">Número</label>
     <input type="text" id="numero" name="numero" placeholder="Digite o numero do telefone" formControlName="numero">
+        @if (contatoForm.get('numero')?.errors && contatoForm.get('required')?.touched) {
+      <div class="mensagem-erro">Campo Obrigatorio</div>
+    }
 
     <label for="email">E-mail</label>
     <input type="text" id="email" name="email" placeholder="Insira o e-mail do contato" formControlName="email">
+        @if (contatoForm.get('email')?.errors && contatoForm.get('required')?.touched ) {
+      <div class="mensagem-erro">Campo Obrigatorio</div>
+    }
+        @if (contatoForm.get('email')?.errors && contatoForm.get('email')?.touched ) {
+      <div class="mensagem-erro">Formato invalido</div>
+    }
 
     <app-separator></app-separator>
 
@@ -36,7 +48,13 @@
 
     <section class="botoes">
       <button (click)="cancelar()" class="botao-cancelar" type="button">Cancelar</button>
-      <button class="botao-salvar" type="submit">Salvar contato</button>
+      <button
+      type="submit"
+      [disabled]="contatoForm.invalid"
+      [ngClass]="contatoForm.valid ? 'botao-salvar' : 'botao-desabilitado'"
+      >
+      Salvar contato
+    </button>
     </section>
   </form>
 </app-container>
