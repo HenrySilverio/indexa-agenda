@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-
-export interface Contact {
-  id: number;
-  name: string;
-  phone: string;
-}
+import { Contact } from '../components/contacts/contacts';
 
 @Injectable({
   providedIn: 'root',

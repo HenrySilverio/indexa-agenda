@@ -10,7 +10,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { ContatoService, Contact } from '../../services/contato.service'; 
+import { ContatoService } from '../../services/contato.service';
+import { Contact } from '../../components/contacts/contacts'
 
 @Component({
   selector: 'app-formulario-contato',
