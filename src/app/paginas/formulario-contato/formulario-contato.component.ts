@@ -9,7 +9,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ContatoService } from '../../services/contato.service';
 import { Contact } from '../../components/contacts/contacts'
 
@@ -22,7 +22,7 @@ import { Contact } from '../../components/contacts/contacts'
     HeaderComponent,
     SeparatorComponent,
     ReactiveFormsModule,
-    RouterLink 
+    RouterLink,
   ],
   templateUrl: './formulario-contato.component.html',
   styleUrls: ['./formulario-contato.component.css'],
@@ -30,7 +30,9 @@ import { Contact } from '../../components/contacts/contacts'
 export class FormularioContatoComponent implements OnInit {
   contatoForm!: FormGroup;
 
-  constructor(private contatoService: ContatoService) {}
+  constructor(private contatoService: ContatoService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.contatoForm = new FormGroup({
@@ -60,11 +62,10 @@ export class FormularioContatoComponent implements OnInit {
 
     this.contatoService.salvarContato(novoContato);
     this.contatoForm.reset();
-    console.log('Contato salvo:', novoContato);
+    this.router.navigate(['/lista-contatos']);
   }
 
   cancelar() {
     this.contatoForm.reset();
-    console.log('Ação de cancelamento executada');
   }
 }
